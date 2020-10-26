@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">MagicQuiz</string>
+    <string name="start">Начать</string>
+    <string name="choose_theme">Choose theme!</string>
+    <string name="nature">Природа</string>
+    <string name="technology">Технологии</string>
+    <string name="Literature">Литература</string>
+    <string name="History">История</string>
+    <string name="mathematics">Математика</string>
+    <string name="choose_thems">Выберите тему викторины</string>
+</resources>
