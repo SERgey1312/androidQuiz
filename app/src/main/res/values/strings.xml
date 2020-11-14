@@ -8,4 +8,9 @@
     <string name="History">История</string>
     <string name="mathematics">Математика</string>
     <string name="choose_thems">Выберите тему викторины</string>
+    <string name="simple">Легко</string>
+    <string name="simple2">Лёгкий</string>
+    <string name="middle">Средний</string>
+    <string name="hard">Сложный</string>
+    <string name="levels">Выберите уровень сложности</string>
 </resources>

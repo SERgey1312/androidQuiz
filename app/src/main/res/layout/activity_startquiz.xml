@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/back_thems"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/back_thems" />
+
+    <LinearLayout
+        android:id="@+id/levelsLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_centerHorizontal="true"
+        android:padding="12dp"
+        android:layout_marginBottom="15dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/levels"
+            android:textAlignment="center"
+            android:textColor="#F0DE12"
+            android:textSize="23sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:columnCount="1"
+        android:padding="15dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/simple"
+            android:layout_width="228dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/btn_start"
+            android:paddingLeft="13dp"
+            android:paddingRight="13dp"
+            android:text="@string/simple2"
+            android:textColor="@color/colorBlack95"
+            android:textSize="24sp"
+            android:layout_marginBottom="55dp"
+            android:padding="15dp"/>
+
+        <Button
+            android:id="@+id/middle"
+            android:layout_width="228dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/btn_start"
+            android:paddingLeft="13dp"
+            android:paddingRight="13dp"
+            android:text="@string/middle"
+            android:textColor="@color/colorBlack95"
+            android:textSize="24sp"
+            android:layout_marginBottom="55dp"
+            android:padding="15dp"/>
+
+        <Button
+            android:id="@+id/hard"
+            android:layout_width="228dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/btn_start"
+            android:paddingLeft="13dp"
+            android:paddingRight="13dp"
+            android:text="@string/hard"
+            android:textColor="@color/colorBlack95"
+            android:textSize="24sp"
+            android:layout_marginBottom="25dp"
+            android:padding="15dp"/>
+    </GridLayout>
+
+</RelativeLayout>
