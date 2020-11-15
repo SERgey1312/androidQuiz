@@ -14,7 +14,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private SQLiteDatabase db;
 
-    public static final int DATABASE_VERSION = 6;
+    public static final int DATABASE_VERSION = 8;
     public static final String DATABASE_NAME = "magic_quiz";
     public static final String QUESTION_TABLE = "questions";
 
@@ -56,8 +56,38 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     private void fillQuestionTable() {
-        Question q1 = new Question("Получилось?", "ДА", "НЕТ", "Наверное", "Посмотрим", "ДА", "nature");
+        Question q1 = new Question("Самое глубокое озеро в мире?", "Байкал", "Нарочь", "Глубокое", "Неизвестно", "Байкал", "nature");
         insertQuestion(q1);
+        Question q2 = new Question("Самое большое по площади озеро в мире?", "Байкал", "Нарочь", "Мёртвое море", "Черное море", "Мёртвое море", "nature");
+        insertQuestion(q2);
+        Question q3 = new Question("Самое большое млекопитающее?", "Слон", "Синий кит", "Касатка", "Белый медведь", "Синий кит", "nature");
+        insertQuestion(q3);
+        Question q4 = new Question("Самая маленькая птица в мире?", "Карликовый воробей", "Каллибри", "Голубь", "Карликовая ворона", "Каллибри", "nature");
+        insertQuestion(q4);
+        Question q5 = new Question("Как называется водная оболочка Земли?", "Гидросфера", "Литосфера", "Ионосфера", "Океан", "Гидросфера", "nature");
+        insertQuestion(q5);
+        Question q6 = new Question("Самое опасное животное на Земле?", "Тигр", "Лев", "Акула", "Человек", "Человек", "nature");
+        insertQuestion(q6);
+        Question q7 = new Question("Какое животное вымерло?", "Мамонт", "Лев", "Акула", "Утконос", "Мамонт", "nature");
+        insertQuestion(q7);
+        Question q8 = new Question("Какое животное несет яйца?", "Кенгуру", "Утконос", "Заяц", "Волк", "Утконос", "nature");
+        insertQuestion(q8);
+        Question q9 = new Question("Как называется самая высокая гора в мире?", "Эверест", "Бухарест", "Килиманджаро", "Восток", "Эверест", "nature");
+        insertQuestion(q9);
+        Question q10 = new Question("Что едят ежи?", "Яблоки", "Грибы", "Всеядные", "Только мясо", "Всеядные", "nature");
+        insertQuestion(q10);
+        Question q11 = new Question("Какой газ производят растения?", "Сернистый", "Водород", "Неон", "Кислород", "Кислород", "nature");
+        insertQuestion(q11);
+        Question q12 = new Question("Какой газ выдыхают животные?", "Сернистый", "Водород", "Углекислый", "Кислород", "Углекислый", "nature");
+        insertQuestion(q12);
+        Question q13 = new Question("Какой газ нужен для жизни всем?", "Азотный", "Водород", "Углекислый", "Кислород", "Кислород", "nature");
+        insertQuestion(q13);
+        Question q14 = new Question("Птица-санитар леса?", "Голубь", "Сова", "Кукушка", "Дятел", "Дятел", "nature");
+        insertQuestion(q14);
+        Question q15 = new Question("Сколько цветов в радуге?", "5", "10", "7", "6", "7", "nature");
+        insertQuestion(q15);
+        Question q16 = new Question("Как выглядит ipV4 адрес?", "192.168.0.1", "299.475.888.11", "192..0.0", "256.1.1.1", "192.168.0.1", "technology");
+        insertQuestion(q16);
     }
 
     private void insertQuestion(Question question) {
@@ -72,10 +102,18 @@ public class DBHelper extends SQLiteOpenHelper {
         db.insert(QUESTION_TABLE, null, cv);
     }
 
-    public ArrayList<Question> getQuestionList(){
+    public ArrayList<Question> getQuestionList(String category){
         ArrayList<Question> questionList = new ArrayList<>();
         db = getReadableDatabase();
-        Cursor cursor = db.rawQuery("select * from " + QUESTION_TABLE, null);
+        String selection = QUESTION_THEME + "= ?";
+
+        String[] selectionArgs = new String[] {category};
+
+        Cursor cursor = db.query(QUESTION_TABLE,
+                null,
+                selection,
+                selectionArgs,
+                null,null,null);
         if (cursor.moveToFirst()){
             do {
                 Question question = new Question();

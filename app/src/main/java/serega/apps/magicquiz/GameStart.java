@@ -43,12 +43,15 @@ public class GameStart extends AppCompatActivity implements View.OnClickListener
         SQLiteDatabase database = dbHelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
 
-        allQuestions = dbHelper.getQuestionList();
+        String theme = getIntent().getExtras().getString("theme");
+        int questionCount = getIntent().getExtras().getInt("level");
+
+        allQuestions = getQuestions(questionCount, dbHelper.getQuestionList(theme));
         questionFromDb.setText(allQuestions.get(0).getQuestion());
-        ans1.setText(allQuestions.get(0).getAns1());
-        ans2.setText(allQuestions.get(0).getAns2());
-        ans3.setText(allQuestions.get(0).getAns3());
-        ans4.setText(allQuestions.get(0).getAns4());
+            ans1.setText(allQuestions.get(0).getAns1());
+            ans2.setText(allQuestions.get(0).getAns2());
+            ans3.setText(allQuestions.get(0).getAns3());
+            ans4.setText(allQuestions.get(0).getAns4());
 
     }
     //system btn back
@@ -62,5 +65,14 @@ public class GameStart extends AppCompatActivity implements View.OnClickListener
     @Override
     public void onClick(View v) {
 
+    }
+
+
+    public ArrayList<Question> getQuestions(int count, ArrayList<Question> list){
+        ArrayList<Question> listnew = new ArrayList<>();
+        for (int i = 0; i < count; i++){
+            listnew.add(list.get(i));
+        }
+        return listnew;
     }
 }
