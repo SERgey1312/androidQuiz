@@ -13,4 +13,7 @@
     <string name="middle">Средний</string>
     <string name="hard">Сложный</string>
     <string name="levels">Выберите уровень сложности</string>
+    <string name="color_green">#00FF40</string>
+    <string name="endText">Вы дали верных ответов:</string>
+    <string name="to_start">В начало</string>
 </resources>

@@ -14,7 +14,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private SQLiteDatabase db;
 
-    public static final int DATABASE_VERSION = 8;
+    public static final int DATABASE_VERSION = 9;
     public static final String DATABASE_NAME = "magic_quiz";
     public static final String QUESTION_TABLE = "questions";
 
@@ -88,6 +88,34 @@ public class DBHelper extends SQLiteOpenHelper {
         insertQuestion(q15);
         Question q16 = new Question("Как выглядит ipV4 адрес?", "192.168.0.1", "299.475.888.11", "192..0.0", "256.1.1.1", "192.168.0.1", "technology");
         insertQuestion(q16);
+        Question q17 = new Question("Логотипом какого ЯП является слон?", "PHP", "C++", "JS", "C#", "PHP", "technology");
+        insertQuestion(q17);
+        Question q18 = new Question("Логотипом какого ЯП является кружка кофе?", "PHP", "C++", "Java", "C#", "Java", "technology");
+        insertQuestion(q18);
+        Question q19 = new Question("Логотипом какого ЯП является змея?", "PHP", "C++", "Java", "Python", "Python", "technology");
+        insertQuestion(q19);
+        Question q20 = new Question("Какой ЯП является низкоуровневым?", "PHP", "C++", "Java", "Assembler", "Assembler", "technology");
+        insertQuestion(q20);
+        Question q21 = new Question("Какой формат файла используется при создании сжатого цифрового архива?", "JPEG", "PNG", "ZIP", "PDF", "ZIP", "technology");
+        insertQuestion(q21);
+        Question q22 = new Question("Благодаря какой технологии возможны телефонные звонки через интернет?", "VoIP", "Bluetooth", "Ethernet", "V8", "VoIP", "technology");
+        insertQuestion(q22);
+        Question q23 = new Question("Какой ЯП используется наиболее широко?", "PHP", "C#", "JAVA", "Swift", "JAVA", "technology");
+        insertQuestion(q23);
+        Question q24 = new Question("Какой примерно объем информации существует в цифровом мире на сегодняшний день?", "2,7 мегабайт", "2,7 зеттабайт", "2,7 террабайт", "2,7 гигабайт", "2,7 зеттабайт", "technology");
+        insertQuestion(q24);
+        Question q25 = new Question("Какой ЯП используется для оживления статичных html-страниц?", "JS", "JAVA", "PHP", "CSS", "JS", "technology");
+        insertQuestion(q25);
+        Question q26 = new Question("Сколько есть уровней сетевой модели OSI?", "3", "4", "7", "6", "7", "technology");
+        insertQuestion(q26);
+        Question q27 = new Question("Чем отличается роутер от маршрутизатора?", "Роутер быстрее", "Роутер медленнее", "Ничем", "Много чем", "Ничем", "technology");
+        insertQuestion(q27);
+        Question q28 = new Question("Сколько типов данных всего есть в PHP?", "5", "6", "10", "3", "10", "technology");
+        insertQuestion(q28);
+        Question q29 = new Question("Сколько типов данных всего есть в JS?", "8", "3", "5", "7", "8", "technology");
+        insertQuestion(q29);
+        Question q30 = new Question("Что используется для стилизации веб-страниц?", "HTML4", "PHP", "CSS", "HTML5", "CSS", "technology");
+        insertQuestion(q30);
     }
 
     private void insertQuestion(Question question) {

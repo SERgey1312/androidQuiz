@@ -16,10 +16,11 @@
         <TextView
             android:id="@+id/questionFromDb"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="200dp"
             android:gravity="center"
             android:text="question"
-            android:textSize="45sp"
+
+            android:textSize="25sp"
             />
 
         <GridLayout
@@ -32,52 +33,48 @@
 
             <Button
                 android:id="@+id/a1"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
                 android:layout_gravity="fill"
-                android:layout_margin="5dp"
-                android:background="@drawable/btn_start"
+                android:background="#2ECCFA"
                 android:text="@string/hard"
-                android:textColor="@color/colorBlack95"
+                android:textColor="#111111"
                 />
 
             <Button
                 android:id="@+id/a2"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
                 android:layout_gravity="fill"
-                android:layout_margin="5dp"
-                android:background="@drawable/btn_start"
+                android:background="#5858FA"
                 android:text="@string/hard"
-                android:textColor="@color/colorBlack95" />
+                android:textColor="#111111" />
 
             <Button
                 android:id="@+id/a3"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
                 android:layout_gravity="fill"
-                android:layout_margin="5dp"
-                android:background="@drawable/btn_start"
-                android:text="@string/hard"
-                android:textColor="@color/colorBlack95" />
+                android:background="#00FF80"
+                android:text= "Сложный выбор"
+                android:textColor="#111111" />
 
             <Button
                 android:id="@+id/a4"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
                 android:layout_gravity="fill"
-                android:layout_margin="5dp"
-                android:background="@drawable/btn_start"
+                android:background="#FE2EF7"
                 android:text="@string/hard"
-                android:textColor="@color/colorBlack95" />
+                android:textColor="#111111" />
         </GridLayout>
     </LinearLayout>
 </RelativeLayout>
