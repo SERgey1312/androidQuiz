@@ -19,7 +19,7 @@
             android:layout_height="200dp"
             android:gravity="center"
             android:text="question"
-
+            android:background="#F6CECE"
             android:textSize="25sp"
             />
 
