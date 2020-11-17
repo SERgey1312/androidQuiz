@@ -14,7 +14,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private SQLiteDatabase db;
 
-    public static final int DATABASE_VERSION = 10;
+    public static final int DATABASE_VERSION = 11;
     public static final String DATABASE_NAME = "magic_quiz";
     public static final String QUESTION_TABLE = "questions";
 

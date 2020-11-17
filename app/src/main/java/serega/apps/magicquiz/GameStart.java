@@ -35,6 +35,7 @@ public class GameStart extends AppCompatActivity implements View.OnClickListener
     Button ans4;
     String textBtn;
     int counterTrue;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,13 +45,11 @@ public class GameStart extends AppCompatActivity implements View.OnClickListener
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         dbHelper = new DBHelper(this);
-        SQLiteDatabase database = dbHelper.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
 
-        String theme = getIntent().getExtras().getString("theme");
+        String theme_quiz = getIntent().getExtras().getString("theme");
         int questionCount = getIntent().getExtras().getInt("level");
 
-        allQuestions = getQuestions(questionCount, dbHelper.getQuestionList(theme));
+        allQuestions = getQuestions(questionCount, dbHelper.getQuestionList(theme_quiz));
 
         questionFromDb = findViewById(R.id.questionFromDb);
         ans1 = findViewById(R.id.a1);
@@ -66,20 +65,13 @@ public class GameStart extends AppCompatActivity implements View.OnClickListener
         nextQuestion(allQuestions);
 
     }
-    //system btn back
-    @Override
-    public void onBackPressed(){
-        Intent intent = new Intent(GameStart.this, GameThems.class);
-        startActivity(intent);
-        finish();
-    }
-    //system btn back (end)
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.a1:
                 textBtn = (String) ans1.getText();
-                if(allQuestions.size() >= 1){
+                if (allQuestions.size() >= 1) {
                     checkAnswer(allQuestions.get(0), textBtn);
                     allQuestions.remove(0);
                     setPause();
@@ -87,7 +79,7 @@ public class GameStart extends AppCompatActivity implements View.OnClickListener
                 break;
             case R.id.a2:
                 textBtn = (String) ans2.getText();
-                if(allQuestions.size() >= 1){
+                if (allQuestions.size() >= 1) {
                     checkAnswer(allQuestions.get(0), textBtn);
                     allQuestions.remove(0);
                     setPause();
@@ -96,7 +88,7 @@ public class GameStart extends AppCompatActivity implements View.OnClickListener
                 break;
             case R.id.a3:
                 textBtn = (String) ans3.getText();
-                if(allQuestions.size() >= 1){
+                if (allQuestions.size() >= 1) {
                     checkAnswer(allQuestions.get(0), textBtn);
                     allQuestions.remove(0);
                     setPause();
@@ -105,7 +97,7 @@ public class GameStart extends AppCompatActivity implements View.OnClickListener
                 break;
             case R.id.a4:
                 textBtn = (String) ans4.getText();
-                if(allQuestions.size() >= 1){
+                if (allQuestions.size() >= 1) {
                     checkAnswer(allQuestions.get(0), textBtn);
                     allQuestions.remove(0);
                     setPause();
@@ -115,61 +107,36 @@ public class GameStart extends AppCompatActivity implements View.OnClickListener
     }
 
 
-    public ArrayList<Question> getQuestions(int count, ArrayList<Question> list){
+    public ArrayList<Question> getQuestions(int count, ArrayList<Question> list) {
         ArrayList<Question> listnew = new ArrayList<>();
         Integer[] listInt = new Integer[15];
-        for (int i = 0 ; i < 15; i++){
+        for (int i = 0; i < 15; i++) {
             listInt[i] = i;
         }
         Collections.shuffle(Arrays.asList(listInt));
-        for (int i = 0; i < count; i++){
+        for (int i = 0; i < count; i++) {
             listnew.add(list.get(listInt[i]));
         }
         return listnew;
     }
 
-    public void checkAnswer(Question question, String textBtn){
-        System.out.println(textBtn + "YOUR ANSWER");
-        System.out.println(question.getTrueAns() + "TRUE ANSWER");
-        ans1.setClickable(false);
-        ans2.setClickable(false);
-        ans3.setClickable(false);
-        ans4.setClickable(false);
-        ans1.setEnabled(false);
-        ans2.setEnabled(false);
-        ans3.setEnabled(false);
-        ans4.setEnabled(false);
-        if ((question.getTrueAns()).equals(textBtn)){
+    public void checkAnswer(Question question, String textBtn) {
+        disableAllBtns();
+        if ((question.getTrueAns()).equals(textBtn)) {
             questionFromDb.setText("ВЕРНО!");
-            ans1.setBackgroundColor(Color.parseColor(getString(R.string.color_green)));
-            ans2.setBackgroundColor(Color.parseColor(getString(R.string.color_green)));
-            ans3.setBackgroundColor(Color.parseColor(getString(R.string.color_green)));
-            ans4.setBackgroundColor(Color.parseColor(getString(R.string.color_green)));
+            setColorForTrueAnswer();
             counterTrue++;
         } else {
             questionFromDb.setText("ОШИБКА!");
-            ans1.setBackgroundColor(Color.parseColor("#FF0000"));
-            ans2.setBackgroundColor(Color.parseColor("#FF0000"));
-            ans3.setBackgroundColor(Color.parseColor("#FF0000"));
-            ans4.setBackgroundColor(Color.parseColor("#FF0000"));
+            setColorForFalseAnswer();
         }
 
     }
 
-    public void nextQuestion(ArrayList<Question> qList){
-        if(qList.size() >=1){
-            ans1.setBackgroundColor(Color.parseColor("#2ECCFA"));
-            ans2.setBackgroundColor(Color.parseColor("#5858FA"));
-            ans3.setBackgroundColor(Color.parseColor("#00FF80"));
-            ans4.setBackgroundColor(Color.parseColor("#FE2EF7"));
-            ans1.setClickable(true);
-            ans2.setClickable(true);
-            ans3.setClickable(true);
-            ans4.setClickable(true);
-            ans1.setEnabled(true);
-            ans2.setEnabled(true);
-            ans3.setEnabled(true);
-            ans4.setEnabled(true);
+    public void nextQuestion(ArrayList<Question> qList) {
+        if (qList.size() >= 1) {
+            setDefaultColorsForBtns();
+            activateAllBtns();
             questionFromDb.setText(allQuestions.get(0).getQuestion());
             ans1.setText(allQuestions.get(0).getAns1());
             ans2.setText(allQuestions.get(0).getAns2());
@@ -184,7 +151,7 @@ public class GameStart extends AppCompatActivity implements View.OnClickListener
         }
     }
 
-    public void setPause(){
+    public void setPause() {
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
@@ -193,4 +160,56 @@ public class GameStart extends AppCompatActivity implements View.OnClickListener
             }
         }, 2000);
     }
+
+    public void disableAllBtns() {
+        ans1.setClickable(false);
+        ans2.setClickable(false);
+        ans3.setClickable(false);
+        ans4.setClickable(false);
+        ans1.setEnabled(false);
+        ans2.setEnabled(false);
+        ans3.setEnabled(false);
+        ans4.setEnabled(false);
+    }
+
+    public void activateAllBtns() {
+        ans1.setClickable(true);
+        ans2.setClickable(true);
+        ans3.setClickable(true);
+        ans4.setClickable(true);
+        ans1.setEnabled(true);
+        ans2.setEnabled(true);
+        ans3.setEnabled(true);
+        ans4.setEnabled(true);
+    }
+
+    public void setDefaultColorsForBtns(){
+        ans1.setBackgroundColor(Color.parseColor("#2ECCFA"));
+        ans2.setBackgroundColor(Color.parseColor("#5858FA"));
+        ans3.setBackgroundColor(Color.parseColor("#00FF80"));
+        ans4.setBackgroundColor(Color.parseColor("#FE2EF7"));
+    }
+
+    public void setColorForTrueAnswer(){
+        ans1.setBackgroundColor(Color.parseColor(getString(R.string.color_green)));
+        ans2.setBackgroundColor(Color.parseColor(getString(R.string.color_green)));
+        ans3.setBackgroundColor(Color.parseColor(getString(R.string.color_green)));
+        ans4.setBackgroundColor(Color.parseColor(getString(R.string.color_green)));
+    }
+
+    public void setColorForFalseAnswer(){
+        ans1.setBackgroundColor(Color.parseColor("#FF0000"));
+        ans2.setBackgroundColor(Color.parseColor("#FF0000"));
+        ans3.setBackgroundColor(Color.parseColor("#FF0000"));
+        ans4.setBackgroundColor(Color.parseColor("#FF0000"));
+    }
+
+    //system btn back
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(GameStart.this, GameThems.class);
+        startActivity(intent);
+        finish();
+    }
+    //system btn back (end)
 }
