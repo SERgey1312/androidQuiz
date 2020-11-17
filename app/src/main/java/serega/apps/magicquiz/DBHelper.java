@@ -14,7 +14,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private SQLiteDatabase db;
 
-    public static final int DATABASE_VERSION = 9;
+    public static final int DATABASE_VERSION = 10;
     public static final String DATABASE_NAME = "magic_quiz";
     public static final String QUESTION_TABLE = "questions";
 
@@ -146,6 +146,66 @@ public class DBHelper extends SQLiteOpenHelper {
         insertQuestion(q44);
         Question q45 = new Question("Кто написал Войну и Мир", "Толстый", "Пушкин", "Народ", "Толстой", "Толстой", "literature");
         insertQuestion(q45);
+        Question q46 = new Question("Карибский кризис 1962 года разгорелся между?", "США и СССР", "Кубой и США", "США и Китаем", "Внутри США", "США и СССР", "history");
+        insertQuestion(q46);
+        Question q47 = new Question("В каком городе подвели итоги Первой мировой войны?", "Вена", "Париж", "Москва", "Берлин", "Париж", "history");
+        insertQuestion(q47);
+        Question q48 = new Question("Какой японский император правил с конца 1926 и до 1989 года?", "Кацубан", "Муцухито", "Хирохито", "Олкахита", "Муцухито", "history");
+        insertQuestion(q48);
+        Question q49 = new Question("Пакт Молотова-Риббентропа между СССР и Германией был подписан в ... ?", "1937", "1939", "1941", "1945", "1939", "history");
+        insertQuestion(q49);
+        Question q50 = new Question("Сколько стран состоит в Содружестве наций?", "39", "22", "52", "47", "52", "history");
+        insertQuestion(q50);
+        Question q51 = new Question("Кто из этих личностей бывший премьер-министр Великобритании?", "Уинстон Черчиль", "Хио Грант", "Франсуа Кавани", "Аджель Руссо", "Уинстон Черчиль", "history");
+        insertQuestion(q51);
+        Question q52 = new Question("Первый император России?", "Иван Грозный", "Иван Первый", "Иван Второй", "Пётр Первый", "Пётр Первый", "history");
+        insertQuestion(q52);
+        Question q53 = new Question("До получения независимости Нидерланды были колонией?", "Португалии", "Англии", "Испании", "Франции", "Испании", "history");
+        insertQuestion(q53);
+        Question q54 = new Question("На конференции в каком городе было принято решение о создании ООН?", "Женева", "Москва", "Лондон", "Вашингтон", "Женева", "history");
+        insertQuestion(q54);
+        Question q55 = new Question("Кто сменил на посту генерального секретаря КПСС Леонида Брежнева?", "Андропов", "Хрущев", "Сталин", "Черненко", "Андропов", "history");
+        insertQuestion(q55);
+        Question q56 = new Question("\"Душой ислама\" называют ...", "Тафсир", "Коран", "Фикх", "Суфизм", "Суфизм", "history");
+        insertQuestion(q56);
+        Question q57 = new Question("Какие государства, являлись доминионами Великобритании после первой мировой войны?", "Индия, Аргентина", "Австралия, Алжир", "Нигерия, Канада", "Алжир, Нигерия", "Нигерия, Канада", "history");
+        insertQuestion(q57);
+        Question q58 = new Question("Высшим органом ООН является ...", "Генеральная Ассамблея", "Международный совет", "Совет ООН", "Верховная Рада", "Генеральная Ассамблея", "history");
+        insertQuestion(q58);
+        Question q59 = new Question("Древнейшая посуда вначале изготовлялась из ...", "Камня", "Металла", "Дерева", "Глины", "Дерева", "history");
+        insertQuestion(q59);
+        Question q60 = new Question("В какой отрасли производства начался промышленный переворот?", "В тяжелой промышленность", "В сельском хозяйстве", "В лесной промышленности", "В легкой промышленности", "в легкой промышленности", "history");
+        insertQuestion(q60);
+        Question q61 = new Question("Представьте 48 минут в часах.", "0,8", "0,48", "0,5", "0,96", "0,8", "mathematics");
+        insertQuestion(q61);
+        Question q62 = new Question("Луч, исходящий из вершины угла и делящий этот угол на два равных угла.", "Медиана", "Высота", "Биссектриса", "Хорда", "Биссектриса", "mathematics");
+        insertQuestion(q62);
+        Question q63 = new Question("Отрезок, соединяющий вершину треугольника с серединой противоположной стороны.", "Медиана", "Высота", "Биссектриса", "Хорда", "Медиана", "mathematics");
+        insertQuestion(q63);
+        Question q64 = new Question("Отрезок перпендикуляра, опущенного из вершины геометрической фигуры на её основание или на продолжение основания.", "Медиана", "Высота", "Биссектриса", "Хорда", "Высота", "mathematics");
+        insertQuestion(q64);
+        Question q65 = new Question("Отрезок, соединяющий две точки данной кривой.", "Медиана", "Высота", "Биссектриса", "Хорда", "Хорда", "mathematics");
+        insertQuestion(q65);
+        Question q66 = new Question("Синус 90 градусов?", "0", "1", "0,5", "-1", "1", "mathematics");
+        insertQuestion(q66);
+        Question q67 = new Question("Косинус 90 градусов?", "0", "1", "0,5", "-1", "0", "mathematics");
+        insertQuestion(q67);
+        Question q68 = new Question("Понятие дифференциального исчисления, характеризующее скорость изменения функции в данной точке.", "Тангенс", "Интеграл", "Логарифм", "Произвлдная", "Производная", "mathematics");
+        insertQuestion(q68);
+        Question q69 = new Question("24 * 316 (без калькулятора)", "7548", "7684", "7584", "7084", "7584", "mathematics");
+        insertQuestion(q69);
+        Question q70 = new Question("Как решают квадраное уравнение?", "По теореме Виета", "Через Дискриминант", "Дискриминант, теорема Виета", "Ни один зи вариантов", "Дискриминант, теорема Виета", "mathematics");
+        insertQuestion(q70);
+        Question q71 = new Question("Сумма квадратов длин катетов равна квадрату длины гипотенузы. Что это?", "Теорема Дарвина", "Теорема Виета", "Теорема Корена", "Теорема Пифагора", "Теорема Пифагора", "mathematics");
+        insertQuestion(q71);
+        Question q72 = new Question("Квадратный корень из 256?", "16", "12", "18", "26", "16", "mathematics");
+        insertQuestion(q72);
+        Question q73 = new Question("Формулы, связывающие коэффициенты многочлена и его корни.", "Формулы Виета", "Формулы Пифагора", "Формулы Евклида", "Формулы Энштейна", "Формулы Виета", "mathematics");
+        insertQuestion(q73);
+        Question q74 = new Question("Одна из основных крупных ветвей математики, являющаяся развитием и обобщением арифметики", "Геометрия", "Алгебра", "Тригонометрия", "Планиметрия", "Алгебра", "mathematics");
+        insertQuestion(q74);
+        Question q75 = new Question("Раздел математики, изучающий пространственные структуры и отношения между ними.", "Геометрия", "Алгебра", "Тригонометрия", "Арифметика", "Геометрия", "mathematics");
+        insertQuestion(q75);
     }
 
     private void insertQuestion(Question question) {
