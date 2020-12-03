@@ -20,10 +20,24 @@ public class GameEnd  extends AppCompatActivity {
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         TextView resalt = findViewById(R.id.result);
-        resalt.setText(getIntent().getExtras().getInt("result") + "");
+        resalt.setText(getIntent().getExtras().getInt("result") + " / " + getIntent().getExtras().getInt("level"));
 
         Button BtnToStart = findViewById(R.id.toStart);
         BtnToStart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Intent intent = new Intent(GameEnd.this, MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                } catch (Exception e){
+
+                }
+            }
+        });
+
+        Button BtnStatistic = findViewById(R.id.statistic);
+        BtnStatistic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {

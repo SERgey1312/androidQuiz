@@ -35,7 +35,8 @@ public class GameStart extends AppCompatActivity implements View.OnClickListener
     Button ans4;
     String textBtn;
     int counterTrue;
-
+    int questionCount;
+    String trueAns;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,8 +48,7 @@ public class GameStart extends AppCompatActivity implements View.OnClickListener
         dbHelper = new DBHelper(this);
 
         String theme_quiz = getIntent().getExtras().getString("theme");
-        int questionCount = getIntent().getExtras().getInt("level");
-
+        questionCount = getIntent().getExtras().getInt("level");
         allQuestions = getQuestions(questionCount, dbHelper.getQuestionList(theme_quiz));
 
         questionFromDb = findViewById(R.id.questionFromDb);
@@ -122,6 +122,7 @@ public class GameStart extends AppCompatActivity implements View.OnClickListener
 
     public void checkAnswer(Question question, String textBtn) {
         disableAllBtns();
+        trueAns = question.getTrueAns();
         if ((question.getTrueAns()).equals(textBtn)) {
             questionFromDb.setText("ВЕРНО!");
             setColorForTrueAnswer();
@@ -129,6 +130,15 @@ public class GameStart extends AppCompatActivity implements View.OnClickListener
         } else {
             questionFromDb.setText("ОШИБКА!");
             setColorForFalseAnswer();
+            if(trueAns.equals(ans1.getText())){
+                ans1.setBackgroundColor(Color.parseColor(getString(R.string.color_green)));
+            } else if (trueAns.equals(ans2.getText())){
+                ans2.setBackgroundColor(Color.parseColor(getString(R.string.color_green)));
+            } else if(trueAns.equals(ans3.getText())){
+                ans3.setBackgroundColor(Color.parseColor(getString(R.string.color_green)));
+            } else if (trueAns.equals(ans4.getText())){
+                ans4.setBackgroundColor(Color.parseColor(getString(R.string.color_green)));
+            }
         }
 
     }
@@ -146,6 +156,7 @@ public class GameStart extends AppCompatActivity implements View.OnClickListener
         } else {
             Intent intent = new Intent(GameStart.this, GameEnd.class);
             intent.putExtra("result", counterTrue);
+            intent.putExtra("level", questionCount);
             startActivity(intent);
             finish();
         }

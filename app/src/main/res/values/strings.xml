@@ -16,4 +16,5 @@
     <string name="color_green">#00FF40</string>
     <string name="endText">Вы дали верных ответов:</string>
     <string name="to_start">В начало</string>
+    <string name="statistic">Статистика</string>
 </resources>

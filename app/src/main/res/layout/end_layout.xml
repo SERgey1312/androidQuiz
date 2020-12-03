@@ -16,7 +16,7 @@
     <LinearLayout
         android:id="@+id/levelsLayout"
         android:layout_width="wrap_content"
-        android:layout_height="360dp"
+        android:layout_height="450dp"
         android:layout_centerInParent="true"
         android:padding="12dp"
         android:layout_marginBottom="15dp"
@@ -54,6 +54,20 @@
             android:paddingLeft="13dp"
             android:paddingRight="13dp"
             android:text="@string/to_start"
+            android:textColor="@color/colorBlack95"
+            android:textSize="24sp"
+            android:layout_marginBottom="25dp"
+            android:padding="15dp"/>
+
+        <Button
+            android:id="@+id/statistic"
+            android:layout_width="228dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/btn_start"
+            android:paddingLeft="13dp"
+            android:paddingRight="13dp"
+            android:text="@string/statistic"
             android:textColor="@color/colorBlack95"
             android:textSize="24sp"
             android:layout_marginBottom="25dp"
