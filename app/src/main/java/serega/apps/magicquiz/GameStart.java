@@ -37,6 +37,7 @@ public class GameStart extends AppCompatActivity implements View.OnClickListener
     int counterTrue;
     int questionCount;
     String trueAns;
+    String username;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +50,7 @@ public class GameStart extends AppCompatActivity implements View.OnClickListener
 
         String theme_quiz = getIntent().getExtras().getString("theme");
         questionCount = getIntent().getExtras().getInt("level");
+        username = getIntent().getExtras().getString("username");
         allQuestions = getQuestions(questionCount, dbHelper.getQuestionList(theme_quiz));
 
         questionFromDb = findViewById(R.id.questionFromDb);
@@ -157,6 +159,7 @@ public class GameStart extends AppCompatActivity implements View.OnClickListener
             Intent intent = new Intent(GameStart.this, GameEnd.class);
             intent.putExtra("result", counterTrue);
             intent.putExtra("level", questionCount);
+            intent.putExtra("username", username);
             startActivity(intent);
             finish();
         }

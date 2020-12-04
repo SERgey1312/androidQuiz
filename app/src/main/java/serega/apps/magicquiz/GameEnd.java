@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class GameEnd  extends AppCompatActivity {
+
+    DBHelper dbHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,6 +20,9 @@ public class GameEnd  extends AppCompatActivity {
 
         Window window = getWindow();
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        dbHelper = new DBHelper(this);
+        //dbHelper.insertRecord(new Record("POLU4iLOS", "nature", "hard", 10));
 
         TextView resalt = findViewById(R.id.result);
         resalt.setText(getIntent().getExtras().getInt("result") + " / " + getIntent().getExtras().getInt("level"));
@@ -41,7 +46,7 @@ public class GameEnd  extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    Intent intent = new Intent(GameEnd.this, MainActivity.class);
+                    Intent intent = new Intent(GameEnd.this, Statistic.class);
                     startActivity(intent);
                     finish();
                 } catch (Exception e){

@@ -14,11 +14,12 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private SQLiteDatabase db;
 
-    public static final int DATABASE_VERSION = 11;
+    public static final int DATABASE_VERSION = 20;
     public static final String DATABASE_NAME = "magic_quiz";
     public static final String QUESTION_TABLE = "questions";
+    public static final String STATISTIC_TABLE = "statistic";
 
-
+//для таблицы с вопросами
     public static final String QUESTION_ID = "_ID";
     public static final String QUESTION_BODY = "question_body";
     public static final String QUESTION_THEME = "question_theme";
@@ -27,7 +28,12 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String ANS3 = "ans3";
     public static final String ANS4 = "ans4";
     public static final String TRUE_ANS = "true_ans";
-
+//для таблицы с рекордами
+    public static final String REC_ID = "_ID";
+    public static final String USERNAME = "username";
+    public static final String COMPLEXITY = "complexity";
+    public static final String CATEGORY = "category";
+    public static final String TRUE_COUNT = "count_true_answers";
     public DBHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -47,12 +53,26 @@ public class DBHelper extends SQLiteOpenHelper {
                 TRUE_ANS + " TEXT" + ")";
         db.execSQL(QUESTIONS);
         fillQuestionTable();
+        final String RECORDS = "create table " +
+                STATISTIC_TABLE + "(" +
+                REC_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                USERNAME + " TEXT, " +
+                COMPLEXITY + " TEXT, " +
+                CATEGORY + " TEXT, " +
+                TRUE_COUNT + " TEXT" + ")";
+        db.execSQL(RECORDS);
+        insertRecord(new Record("Sergo1312(simple)", "nature","simple", 100));
+        insertRecord(new Record("Sergo1312(simple)", "nature", "simple", 100));
+        insertRecord(new Record("Sergo1312(middle)", "nature", "middle", 100));
+        insertRecord(new Record("Sergo1312(middle)", "nature", "middle", 100));
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("drop table if exists " + QUESTION_TABLE);
+        db.execSQL("drop table if exists " + STATISTIC_TABLE);
         onCreate(db);
+
     }
 
     private void fillQuestionTable() {
@@ -220,6 +240,15 @@ public class DBHelper extends SQLiteOpenHelper {
         db.insert(QUESTION_TABLE, null, cv);
     }
 
+    public void insertRecord(Record record){
+        ContentValues cv = new ContentValues();
+        cv.put(USERNAME, record.getUsername());
+        cv.put(CATEGORY, record.getCategory());
+        cv.put(TRUE_COUNT, record.getCountTrueAnswers() + "");
+        cv.put(COMPLEXITY, record.getComplexity());
+        db.insert(STATISTIC_TABLE, null, cv);
+    }
+
     public ArrayList<Question> getQuestionList(String category){
         ArrayList<Question> questionList = new ArrayList<>();
         db = getReadableDatabase();
@@ -248,5 +277,30 @@ public class DBHelper extends SQLiteOpenHelper {
         }
         cursor.close();
         return questionList;
+    }
+
+    public ArrayList<Record> getRecordList(String complexity) {
+        ArrayList<Record> recordList = new ArrayList<>();
+        db = getReadableDatabase();
+        String selection = COMPLEXITY + "= ?";
+        String[] selectionArgs = new String[] {complexity};
+        Cursor cursor = db.query(STATISTIC_TABLE,
+                null,
+                selection,
+                selectionArgs,
+                null,null,null);
+        if (cursor.moveToFirst()){
+            do {
+                Record record = new Record();
+                record.setId(cursor.getInt(cursor.getColumnIndex(REC_ID)));
+                record.setUsername(cursor.getString(cursor.getColumnIndex(USERNAME)));
+                record.setCategory(cursor.getString(cursor.getColumnIndex(CATEGORY)));
+                record.setComplexity(cursor.getString(cursor.getColumnIndex(COMPLEXITY)));
+                record.setCountTrueAnswers(cursor.getInt(cursor.getColumnIndex(TRUE_COUNT)));
+                recordList.add(record);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return recordList;
     }
 }
